@@ -87,23 +87,35 @@ class _EventsState extends State<Events> {
             child: ListView(
               padding: const EdgeInsets.all(8),
               children: <Widget>[
-                Container(
+                Card(
                   margin: EdgeInsets.all(listItemMargin),
-                  height: listItemHeight,
                   color: Colors.blue[100],
-                  child: const Center(child: Text('勉強会 1')),
+                  child: SizedBox(
+                    height: listItemHeight,
+                    child: const Center(
+                      child: Text('勉強会 1'),
+                    ),
+                  ),
                 ),
-                Container(
+                Card(
                   margin: EdgeInsets.all(listItemMargin),
-                  height: listItemHeight,
                   color: Colors.blue[100],
-                  child: const Center(child: Text('勉強会 2')),
+                  child: SizedBox(
+                    height: listItemHeight,
+                    child: const Center(
+                      child: Text('勉強会 2'),
+                    ),
+                  ),
                 ),
-                Container(
+                Card(
                   margin: EdgeInsets.all(listItemMargin),
-                  height: listItemHeight,
                   color: Colors.blue[100],
-                  child: const Center(child: Text('勉強会 3')),
+                  child: SizedBox(
+                    height: listItemHeight,
+                    child: const Center(
+                      child: Text('勉強会 3'),
+                    ),
+                  ),
                 ),
               ],
             ),
