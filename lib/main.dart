@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Navigation with Routes',
-      initialRoute: '/login',
+      initialRoute: '/events',
       routes: {
         '/login': (context) => const Login(),
         '/events': (context) => const Events(),
@@ -91,7 +91,8 @@ class _EventsState extends State<Events> {
                   color: Colors.blue[100],
                   child: InkWell(
                     onTap: () {
-                      Navigator.of(context).pushNamed('/detail');
+                      Navigator.of(context)
+                          .pushNamed('/detail', arguments: '勉強会1');
                     },
                     child: SizedBox(
                       height: listItemHeight,
@@ -151,9 +152,31 @@ class Detail extends StatefulWidget {
 class _DetailState extends State<Detail> {
   @override
   Widget build(BuildContext context) {
+    final deviceHeight = MediaQuery.of(context).size.height;
+    final titleAreaPadding = deviceHeight * 0.03;
+    final route = ModalRoute.of(context);
+    if (route == null) {
+      return const SizedBox.shrink();
+    }
+    final arg = route.settings.arguments;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail'),
+      ),
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            padding: EdgeInsets.all(titleAreaPadding),
+            child: Center(
+              child: Text(
+                '$arg',
+                style: const TextStyle(fontSize: 32),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
