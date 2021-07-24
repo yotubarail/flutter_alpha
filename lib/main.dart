@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Navigation with Routes',
-      initialRoute: '/events',
+      initialRoute: '/login',
       routes: {
         '/login': (context) => const Login(),
         '/events': (context) => const Events(),
