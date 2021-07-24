@@ -17,14 +17,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// ログインクラス
+// ログインClass
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
   @override
   _LoginState createState() => _LoginState();
 }
 
-// ログインステート
+// ログインState
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
