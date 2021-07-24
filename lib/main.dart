@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
       title: 'Navigation with Routes',
       initialRoute: '/login',
       routes: {
-        '/login': (_) => const Login(),
+        '/login': (context) => const Login(),
+        '/events': (context) => const Events(),
       },
     );
   }
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
 // ログインClass
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+
   @override
   _LoginState createState() => _LoginState();
 }
@@ -37,7 +39,9 @@ class _LoginState extends State<Login> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed('/events');
+              },
               style: ButtonStyle(
                 padding: MaterialStateProperty.all(
                   const EdgeInsets.all(20),
@@ -47,6 +51,24 @@ class _LoginState extends State<Login> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Events extends StatefulWidget {
+  const Events({Key? key}) : super(key: key);
+
+  @override
+  _EventsState createState() => _EventsState();
+}
+
+class _EventsState extends State<Events> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Events'),
       ),
     );
   }
