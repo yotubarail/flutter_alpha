@@ -81,11 +81,9 @@ class _EventsState extends State<Events> {
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
+          SizedBox(
             height: listAreaHeight,
-            padding: const EdgeInsets.all(4),
             child: ListView(
-              padding: const EdgeInsets.all(8),
               children: <Widget>[
                 Card(
                   margin: EdgeInsets.all(listItemMargin),
