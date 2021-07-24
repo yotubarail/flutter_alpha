@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => const Login(),
         '/events': (context) => const Events(),
+        '/detail': (context) => const Detail(),
       },
     );
   }
@@ -57,7 +58,7 @@ class _LoginState extends State<Login> {
   }
 }
 
-// イベントClass
+// イベント一覧Class
 class Events extends StatefulWidget {
   const Events({Key? key}) : super(key: key);
 
@@ -65,7 +66,7 @@ class Events extends StatefulWidget {
   _EventsState createState() => _EventsState();
 }
 
-// イベントState
+// イベント一覧State
 class _EventsState extends State<Events> {
   @override
   Widget build(BuildContext context) {
@@ -88,10 +89,15 @@ class _EventsState extends State<Events> {
                 Card(
                   margin: EdgeInsets.all(listItemMargin),
                   color: Colors.blue[100],
-                  child: SizedBox(
-                    height: listItemHeight,
-                    child: const Center(
-                      child: Text('勉強会 1'),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).pushNamed('/detail');
+                    },
+                    child: SizedBox(
+                      height: listItemHeight,
+                      child: const Center(
+                        child: Text('勉強会 1'),
+                      ),
                     ),
                   ),
                 ),
@@ -128,6 +134,26 @@ class _EventsState extends State<Events> {
             child: const Text('イベント管理'),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// イベント詳細Class
+class Detail extends StatefulWidget {
+  const Detail({Key? key}) : super(key: key);
+
+  @override
+  _DetailState createState() => _DetailState();
+}
+
+// イベント詳細State
+class _DetailState extends State<Detail> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Detail'),
       ),
     );
   }
