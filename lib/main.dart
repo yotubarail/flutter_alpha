@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Navigation with Routes',
-      initialRoute: '/events',
+      initialRoute: '/login',
       routes: {
         '/login': (context) => const Login(),
         '/events': (context) => const Events(),
@@ -91,8 +91,13 @@ class _EventsState extends State<Events> {
                   color: Colors.blue[100],
                   child: InkWell(
                     onTap: () {
-                      Navigator.of(context)
-                          .pushNamed('/detail', arguments: '勉強会1');
+                      Navigator.of(context).pushNamed(
+                        '/detail',
+                        arguments: EventArguments(
+                          title: '勉強会1',
+                          description: '勉強会1の詳細',
+                        ),
+                      );
                     },
                     child: SizedBox(
                       height: listItemHeight,
@@ -154,11 +159,12 @@ class _DetailState extends State<Detail> {
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     final titleAreaPadding = deviceHeight * 0.03;
+    final detailAreaPadding = deviceHeight * 0.03;
     final route = ModalRoute.of(context);
     if (route == null) {
       return const SizedBox.shrink();
     }
-    final arg = route.settings.arguments;
+    final arg = route.settings.arguments as EventArguments?;
 
     return Scaffold(
       appBar: AppBar(
@@ -171,13 +177,41 @@ class _DetailState extends State<Detail> {
             padding: EdgeInsets.all(titleAreaPadding),
             child: Center(
               child: Text(
-                '$arg',
+                arg!.getTitle,
                 style: const TextStyle(fontSize: 32),
               ),
             ),
+          ),
+          Container(
+            padding: EdgeInsets.all(detailAreaPadding),
+            child: Center(
+              child: Text(
+                arg.getDescription,
+                style: const TextStyle(fontSize: 16),
+              ),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            style: ButtonStyle(
+              padding: MaterialStateProperty.all(
+                const EdgeInsets.all(20),
+              ),
+            ),
+            child: const Text('申し込む'),
           ),
         ],
       ),
     );
   }
+}
+
+class EventArguments {
+  EventArguments({required this.title, required this.description});
+
+  String title;
+  String description;
+
+  String get getTitle => title;
+  String get getDescription => description;
 }
