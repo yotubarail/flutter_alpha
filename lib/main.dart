@@ -110,20 +110,42 @@ class _EventsState extends State<Events> {
                 Card(
                   margin: EdgeInsets.all(listItemMargin),
                   color: Colors.blue[100],
-                  child: SizedBox(
-                    height: listItemHeight,
-                    child: const Center(
-                      child: Text('勉強会 2'),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(
+                        '/detail',
+                        arguments: EventArguments(
+                          title: '勉強会2',
+                          description: '勉強会2の詳細',
+                        ),
+                      );
+                    },
+                    child: SizedBox(
+                      height: listItemHeight,
+                      child: const Center(
+                        child: Text('勉強会 2'),
+                      ),
                     ),
                   ),
                 ),
                 Card(
                   margin: EdgeInsets.all(listItemMargin),
                   color: Colors.blue[100],
-                  child: SizedBox(
-                    height: listItemHeight,
-                    child: const Center(
-                      child: Text('勉強会 3'),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(
+                        '/detail',
+                        arguments: EventArguments(
+                          title: '勉強会3',
+                          description: '勉強会3の詳細',
+                        ),
+                      );
+                    },
+                    child: SizedBox(
+                      height: listItemHeight,
+                      child: const Center(
+                        child: Text('勉強会 3'),
+                      ),
                     ),
                   ),
                 ),
