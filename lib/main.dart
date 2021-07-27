@@ -182,11 +182,14 @@ class _DetailState extends State<Detail> {
     final deviceHeight = MediaQuery.of(context).size.height;
     final titleAreaPadding = deviceHeight * 0.03;
     final detailAreaPadding = deviceHeight * 0.03;
-    final route = ModalRoute.of(context);
-    if (route == null) {
-      return const SizedBox.shrink();
+
+    final arg = ModalRoute.of(context)?.settings.arguments as EventArguments?;
+    final EventArguments event;
+    if (arg is EventArguments) {
+      event = arg;
+    } else {
+      return const Scaffold();
     }
-    final arg = route.settings.arguments as EventArguments?;
 
     return Scaffold(
       appBar: AppBar(
@@ -199,7 +202,7 @@ class _DetailState extends State<Detail> {
             padding: EdgeInsets.all(titleAreaPadding),
             child: Center(
               child: Text(
-                arg!.getTitle,
+                event.getTitle,
                 style: const TextStyle(fontSize: 32),
               ),
             ),
