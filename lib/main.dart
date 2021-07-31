@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -64,6 +65,36 @@ class Events extends StatefulWidget {
 
   @override
   _EventsState createState() => _EventsState();
+
+  Card createEventCard({
+    required BuildContext context,
+    required double cardMargin,
+    required double cardHeight,
+    required String eventTitle,
+    required String eventDescription,
+  }) {
+    return Card(
+      margin: EdgeInsets.all(cardMargin),
+      color: Colors.blue[100],
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).pushNamed(
+            '/detail',
+            arguments: EventArguments(
+              title: eventTitle,
+              description: eventDescription,
+            ),
+          );
+        },
+        child: SizedBox(
+          height: cardHeight,
+          child: Center(
+            child: Text(eventTitle),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 // イベント一覧State
@@ -149,6 +180,12 @@ class _EventsState extends State<Events> {
                     ),
                   ),
                 ),
+                widget.createEventCard(
+                    context: context,
+                    cardMargin: listItemMargin,
+                    cardHeight: listItemHeight,
+                    eventTitle: '勉強会',
+                    eventDescription: '勉強会の詳細'),
               ],
             ),
           ),
