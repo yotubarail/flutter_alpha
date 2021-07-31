@@ -66,6 +66,20 @@ class Events extends StatefulWidget {
   @override
   _EventsState createState() => _EventsState();
 
+  List<Card> createEventList(BuildContext context) {
+    final eventList = <Card>[];
+    for (var i = 0; i < 3; i++) {
+      final c = createEventCard(
+          context: context,
+          cardMargin: 4,
+          cardHeight: 64,
+          eventTitle: '勉強会',
+          eventDescription: '勉強会詳細');
+      eventList.add(c);
+    }
+    return eventList;
+  }
+
   Card createEventCard({
     required BuildContext context,
     required double cardMargin,
@@ -103,8 +117,8 @@ class _EventsState extends State<Events> {
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     final listAreaHeight = deviceHeight * 0.8;
-    final listItemHeight = deviceHeight * 0.08;
-    final listItemMargin = deviceHeight * 0.01;
+    // final listItemHeight = deviceHeight * 0.08;
+    // final listItemMargin = deviceHeight * 0.01;
 
     return Scaffold(
       appBar: AppBar(
@@ -115,79 +129,79 @@ class _EventsState extends State<Events> {
         children: [
           SizedBox(
             height: listAreaHeight,
-            child: ListView(
-              children: <Widget>[
-                Card(
-                  margin: EdgeInsets.all(listItemMargin),
-                  color: Colors.blue[100],
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushNamed(
-                        '/detail',
-                        arguments: EventArguments(
-                          title: '勉強会1',
-                          description: '勉強会1の詳細',
-                        ),
-                      );
-                    },
-                    child: SizedBox(
-                      height: listItemHeight,
-                      child: const Center(
-                        child: Text('勉強会 1'),
-                      ),
-                    ),
-                  ),
+            child: ListView(children: widget.createEventList(context)
+                // children: [
+                //   Card(
+                //     margin: EdgeInsets.all(listItemMargin),
+                //     color: Colors.blue[100],
+                //     child: InkWell(
+                //       onTap: () {
+                //         Navigator.of(context).pushNamed(
+                //           '/detail',
+                //           arguments: EventArguments(
+                //             title: '勉強会1',
+                //             description: '勉強会1の詳細',
+                //           ),
+                //         );
+                //       },
+                //       child: SizedBox(
+                //         height: listItemHeight,
+                //         child: const Center(
+                //           child: Text('勉強会 1'),
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                //   Card(
+                //     margin: EdgeInsets.all(listItemMargin),
+                //     color: Colors.blue[100],
+                //     child: InkWell(
+                //       onTap: () {
+                //         Navigator.of(context).pushNamed(
+                //           '/detail',
+                //           arguments: EventArguments(
+                //             title: '勉強会2',
+                //             description: '勉強会2の詳細',
+                //           ),
+                //         );
+                //       },
+                //       child: SizedBox(
+                //         height: listItemHeight,
+                //         child: const Center(
+                //           child: Text('勉強会 2'),
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                //   Card(
+                //     margin: EdgeInsets.all(listItemMargin),
+                //     color: Colors.blue[100],
+                //     child: InkWell(
+                //       onTap: () {
+                //         Navigator.of(context).pushNamed(
+                //           '/detail',
+                //           arguments: EventArguments(
+                //             title: '勉強会3',
+                //             description: '勉強会3の詳細',
+                //           ),
+                //         );
+                //       },
+                //       child: SizedBox(
+                //         height: listItemHeight,
+                //         child: const Center(
+                //           child: Text('勉強会 3'),
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                //   widget.createEventCard(
+                //       context: context,
+                //       cardMargin: listItemMargin,
+                //       cardHeight: listItemHeight,
+                //       eventTitle: '勉強会',
+                //       eventDescription: '勉強会の詳細'),
+                // ],
                 ),
-                Card(
-                  margin: EdgeInsets.all(listItemMargin),
-                  color: Colors.blue[100],
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushNamed(
-                        '/detail',
-                        arguments: EventArguments(
-                          title: '勉強会2',
-                          description: '勉強会2の詳細',
-                        ),
-                      );
-                    },
-                    child: SizedBox(
-                      height: listItemHeight,
-                      child: const Center(
-                        child: Text('勉強会 2'),
-                      ),
-                    ),
-                  ),
-                ),
-                Card(
-                  margin: EdgeInsets.all(listItemMargin),
-                  color: Colors.blue[100],
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushNamed(
-                        '/detail',
-                        arguments: EventArguments(
-                          title: '勉強会3',
-                          description: '勉強会3の詳細',
-                        ),
-                      );
-                    },
-                    child: SizedBox(
-                      height: listItemHeight,
-                      child: const Center(
-                        child: Text('勉強会 3'),
-                      ),
-                    ),
-                  ),
-                ),
-                widget.createEventCard(
-                    context: context,
-                    cardMargin: listItemMargin,
-                    cardHeight: listItemHeight,
-                    eventTitle: '勉強会',
-                    eventDescription: '勉強会の詳細'),
-              ],
-            ),
           ),
           ElevatedButton(
             onPressed: () {},
