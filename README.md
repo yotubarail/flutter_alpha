@@ -1,4 +1,4 @@
-# techshop_alpha
+# flutter_alpha
 
 A new Flutter project.
 
