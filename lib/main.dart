@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter_alpha/routing/routing.dart';
 
@@ -10,11 +11,14 @@ final eventList = StateProvider((ref) => ['勉強会1', '勉強会2', '勉強会
 
 final eventItem = StateProvider((ref) => '勉強会1');
 
-void main() => runApp(
-      const ProviderScope(
-        child: MyApp(),
-      ),
-    );
+Future<void> main() async {
+  await Firebase.initializeApp();
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
+}
 
 class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
