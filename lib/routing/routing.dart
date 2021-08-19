@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_alpha/view/login_view.dart';
-import 'package:flutter_alpha/view/event_view.dart';
+import 'package:flutter_alpha/view/events_view.dart';
 import 'package:flutter_alpha/view/detail_view.dart';
 
 Map<String, Widget Function(BuildContext)> routing(BuildContext context) {
