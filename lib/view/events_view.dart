@@ -62,7 +62,13 @@ class Events extends ConsumerWidget {
             child: events.when(
               // 値が取得できたとき
               data: (query) {
-                return Text(query);
+                return ListView.builder(
+                  itemCount: query.length,
+                  itemBuilder: (context, index) {
+                    return Text(query[index].title);
+                    // return Text('test');
+                  },
+                );
               },
               // 値が読込中のとき
               loading: () {
