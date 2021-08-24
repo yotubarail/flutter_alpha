@@ -1,11 +1,13 @@
+// 依存パッケージ
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import '/routing/routing.dart';
+// 参照ファイル
+import '/view/login_view.dart';
 
-Future<void> main() async {
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
@@ -20,9 +22,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Navigation with Routes',
-      routes: routing(context),
+    return const MaterialApp(
+      title: '勉強会プラットフォーム',
+      home: LoginView(),
     );
   }
 }
