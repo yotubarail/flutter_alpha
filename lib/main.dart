@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 // 参照ファイル
-import '/view/login_view.dart';
+import '/view/signin_view.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();

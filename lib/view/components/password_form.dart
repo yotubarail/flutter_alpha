@@ -3,27 +3,29 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// 参照ファイル
+import '/view_model/login_view_model.dart';
+
 class PasswordForm extends ConsumerWidget {
-  PasswordForm({
-    required this.state,
-    Key? key,
-  }) : super(key: key);
-  String state;
+  const PasswordForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final deviceWidth = MediaQuery.of(context).size.width;
-    return SizedBox(
-      width: deviceWidth * 0.6,
+    return Container(
+      margin: const EdgeInsets.all(8),
+      width: deviceWidth * 0.7,
       child: TextFormField(
-        initialValue: state,
+        initialValue: watch(passwordProvider).state,
         obscureText: true,
         decoration: const InputDecoration(
           border: OutlineInputBorder(),
           labelText: 'パスワード',
         ),
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: (value) => (value!.isEmpty) ? 'パスワードを入力してください' : null,
         onChanged: (value) {
-          state = value;
+          watch(passwordProvider).state = value;
         },
       ),
     );
