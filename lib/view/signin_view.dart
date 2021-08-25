@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // 参照ファイル
-import '/view/components/email_form.dart';
-import '/view/components/email_signin_button.dart';
-import '/view/components/email_signup_button.dart';
-import '/view/components/password_form.dart';
+import '/view/components/signin/email_form.dart';
+import '/view/components/signin/email_signin_button.dart';
+import '/view/components/signin/email_signup_button.dart';
+import '/view/components/signin/password_form.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);

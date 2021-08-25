@@ -12,7 +12,7 @@ class EmailForm extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final deviceWidth = MediaQuery.of(context).size.width;
-    final emailPatarn = RegExp(
+    final emailPattern = RegExp(
         r'^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$');
     return Container(
       margin: const EdgeInsets.all(8),
@@ -25,7 +25,7 @@ class EmailForm extends ConsumerWidget {
         ),
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: (value) =>
-            !emailPatarn.hasMatch(value!) ? 'メールアドレスを入力してください' : null,
+            !emailPattern.hasMatch(value!) ? 'メールアドレスを入力してください' : null,
         onChanged: (value) {
           watch(emailProvider).state = value;
         },
