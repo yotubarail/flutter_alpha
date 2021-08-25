@@ -11,12 +11,13 @@ class PasswordForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final deviceWidth = MediaQuery.of(context).size.width;
+    final screenMaxWidth = MediaQuery.of(context).size.width;
+    final password = watch(passwordProvider);
     return Container(
       margin: const EdgeInsets.all(8),
-      width: deviceWidth * 0.7,
+      width: screenMaxWidth * 0.7,
       child: TextFormField(
-        initialValue: watch(passwordProvider).state,
+        initialValue: password.state,
         obscureText: true,
         decoration: const InputDecoration(
           border: OutlineInputBorder(),
@@ -25,7 +26,7 @@ class PasswordForm extends ConsumerWidget {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: (value) => (value!.isEmpty) ? 'パスワードを入力してください' : null,
         onChanged: (value) {
-          watch(passwordProvider).state = value;
+          password.state = value;
         },
       ),
     );
