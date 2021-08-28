@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // 参照ファイル
-import '../../../view_model/signin_view_model.dart';
+import '/view_model/signin_view_model.dart';
 
 class EmailForm extends ConsumerWidget {
   const EmailForm({Key? key}) : super(key: key);
