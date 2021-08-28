@@ -6,6 +6,32 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_alpha/view/components/event_arguments.dart';
 import 'package:flutter_alpha/view_model/events_view_model.dart';
 import 'package:flutter_alpha/model/events_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+// 参照ファイル
+import '/model/signin_model.dart';
+
+class EventListPage extends StatelessWidget {
+  const EventListPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Event List'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () async {
+              await authSignOut();
+            },
+          ),
+        ],
+      ),
+      body: const Text('Event List'),
+    );
+  }
+}
 
 class Events extends ConsumerWidget {
   const Events({Key? key}) : super(key: key);

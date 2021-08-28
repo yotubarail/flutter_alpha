@@ -8,7 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // 参照ファイル
 import '/model/signin_model.dart';
-import '/view/components/signin/email_signup_button.dart';
+import '/view/event_list_view.dart';
 import '/view/signin_view.dart';
 
 Future main() async {
@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: '勉強会プラットフォーム',
       home: InitialView(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -42,9 +43,7 @@ class InitialView extends HookWidget {
     if (userData == null) {
       return const SigninPage();
     } else {
-      return const Scaffold(
-        body: EmailSignupButton(),
-      );
+      return const EventListPage();
     }
   }
 }

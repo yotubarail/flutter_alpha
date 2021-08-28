@@ -41,11 +41,10 @@ class SigninViewModel extends StateNotifier<AuthState> {
     if (validateEmail() || validatePassword()) {
       print('フォームに正しく入力してください');
     } else {
-      // FirebaseAuth.instance.createUserWithEmailAndPassword(
-      //   email: state.email,
-      //   password: state.password,
-      // );
-      FirebaseAuth.instance.signOut();
+      FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: state.email,
+        password: state.password,
+      );
     }
   }
 
