@@ -7,9 +7,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // 参照ファイル
-import '/model/signin_model.dart';
 import '/view/event_list_view.dart';
 import '/view/signin_view.dart';
+import 'model/auth_model.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
