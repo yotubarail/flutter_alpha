@@ -2,8 +2,22 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// 参照ファイル
+// import '/model/signin_model.dart';
+
+// freezed生成ファイル
 part 'signin_view_model.freezed.dart';
+
+// final authFutureProvider = Provider.autoDispose((ref) async {
+//   final user = await ref.watch(authStreamProvider.last);
+//   if (user != null) {
+//     return user.uid;
+//   } else {
+//     return 'test no user';
+//   }
+// });
 
 final signinViewModelProvider = StateNotifierProvider<SigninViewModel, dynamic>(
   (ref) => SigninViewModel(),
@@ -27,10 +41,11 @@ class SigninViewModel extends StateNotifier<AuthState> {
     if (validateEmail() || validatePassword()) {
       print('フォームに正しく入力してください');
     } else {
-      FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: state.email,
-        password: state.password,
-      );
+      // FirebaseAuth.instance.createUserWithEmailAndPassword(
+      //   email: state.email,
+      //   password: state.password,
+      // );
+      FirebaseAuth.instance.signOut();
     }
   }
 

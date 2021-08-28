@@ -9,8 +9,8 @@ import '/view/components/signin/email_signin_button.dart';
 import '/view/components/signin/email_signup_button.dart';
 import '/view/components/signin/password_form.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
+class SigninPage extends StatelessWidget {
+  const SigninPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

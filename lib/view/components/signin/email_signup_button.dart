@@ -22,7 +22,8 @@ class EmailSignupButton extends ConsumerWidget {
             const EdgeInsets.all(20),
           ),
         ),
-        child: const Text('サインアップ'),
+        // child: const Text('サインアップ'),
+        child: const Text('サインアウト'),
       ),
     );
   }
