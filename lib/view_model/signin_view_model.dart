@@ -1,47 +1,39 @@
 // 依存パッケージ
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // 参照ファイル
-// import '/model/signin_model.dart';
+import '/model/auth_model.dart';
 
 // freezed生成ファイル
 part 'signin_view_model.freezed.dart';
-
-// final authFutureProvider = Provider.autoDispose((ref) async {
-//   final user = await ref.watch(authStreamProvider.last);
-//   if (user != null) {
-//     return user.uid;
-//   } else {
-//     return 'test no user';
-//   }
-// });
 
 final signinViewModelProvider = StateNotifierProvider<SigninViewModel, dynamic>(
   (ref) => SigninViewModel(),
 );
 
-class SigninViewModel extends StateNotifier<AuthState> {
-  SigninViewModel() : super(const AuthState());
+class SigninViewModel extends StateNotifier<SigninData> {
+  SigninViewModel() : super(const SigninData());
 
-  void emailSignin() {
+  final authModel = AuthModel();
+
+  Future emailSignin() async {
     if (validateEmail() || validatePassword()) {
       print('フォームに正しく入力してください');
     } else {
-      FirebaseAuth.instance.signInWithEmailAndPassword(
+      await authModel.emailSignin(
         email: state.email,
         password: state.password,
       );
     }
   }
 
-  void emailSignup() {
+  Future emailSignup() async {
     if (validateEmail() || validatePassword()) {
       print('フォームに正しく入力してください');
     } else {
-      FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await authModel.emailSignup(
         email: state.email,
         password: state.password,
       );
@@ -76,10 +68,9 @@ class SigninViewModel extends StateNotifier<AuthState> {
 }
 
 @freezed
-abstract class AuthState with _$AuthState {
-  const factory AuthState({
-    @Default(false) bool signin,
+abstract class SigninData with _$SigninData {
+  const factory SigninData({
     @Default('test@test.com') String email,
     @Default('P@ssw0rd') String password,
-  }) = _AuthState;
+  }) = _SigninData;
 }

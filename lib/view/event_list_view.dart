@@ -9,13 +9,14 @@ import 'package:flutter_alpha/model/events_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 // 参照ファイル
-import '/model/signin_model.dart';
+import '/model/auth_model.dart';
 
 class EventListPage extends StatelessWidget {
   const EventListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final authModel = AuthModel();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Event List'),
@@ -23,7 +24,7 @@ class EventListPage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () async {
-              await authSignOut();
+              await authModel.signOut();
             },
           ),
         ],
