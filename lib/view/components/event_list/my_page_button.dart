@@ -3,6 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// 参照ファイル
+import '/view/my_event_list_view.dart';
+
 class MyPageButton extends ConsumerWidget {
   const MyPageButton({Key? key}) : super(key: key);
 
@@ -12,7 +15,15 @@ class MyPageButton extends ConsumerWidget {
       margin: const EdgeInsets.all(8),
       width: 200,
       child: ElevatedButton(
-        onPressed: () => '',
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (context) {
+                return const MyEventListPage();
+              },
+            ),
+          );
+        },
         style: ButtonStyle(
           padding: MaterialStateProperty.all(
             const EdgeInsets.all(20),
