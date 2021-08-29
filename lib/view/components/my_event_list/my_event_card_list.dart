@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // 参照ファイル
 import '/model/events_model.dart';
-import '/view/event_detail_page.dart';
+import '/view/my_event_detail_page.dart';
 
 class MyEventCardList extends HookWidget {
   const MyEventCardList({Key? key}) : super(key: key);
@@ -54,8 +54,7 @@ class MyEventCardList extends HookWidget {
           Navigator.of(context).push(
             MaterialPageRoute<void>(
               builder: (context) {
-                // return EventDetailPage(event: event);
-                return const Scaffold();
+                return MyEventDetailPage(event: event);
               },
             ),
           );
