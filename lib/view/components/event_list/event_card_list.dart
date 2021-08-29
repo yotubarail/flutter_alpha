@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // 参照ファイル
 import '/model/events_model.dart';
-import '/view/event_detail_view.dart';
+import '/view/event_detail_page.dart';
 
 class EventCardList extends HookWidget {
   const EventCardList({Key? key}) : super(key: key);

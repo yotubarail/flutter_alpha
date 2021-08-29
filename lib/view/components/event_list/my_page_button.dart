@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // 参照ファイル
-import '/view/my_event_list_view.dart';
+import '/view/my_event_list_page.dart';
 
 class MyPageButton extends ConsumerWidget {
   const MyPageButton({Key? key}) : super(key: key);

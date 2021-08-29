@@ -8,8 +8,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // 参照ファイル
 import '/model/auth_model.dart';
-import '/view/event_list_view.dart';
-import '/view/signin_view.dart';
+import '/view/event_list_page.dart';
+import '/view/signin_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
