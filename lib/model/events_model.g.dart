@@ -6,15 +6,17 @@ part of 'events_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Item _$_$_ItemFromJson(Map<String, dynamic> json) {
-  return _$_Item(
+_$_Event _$_$_EventFromJson(Map<String, dynamic> json) {
+  return _$_Event(
+    json['id'] as String,
     json['title'] as String,
     json['body'] as String,
     json['guestCount'] as int,
   );
 }
 
-Map<String, dynamic> _$_$_ItemToJson(_$_Item instance) => <String, dynamic>{
+Map<String, dynamic> _$_$_EventToJson(_$_Event instance) => <String, dynamic>{
+      'id': instance.id,
       'title': instance.title,
       'body': instance.body,
       'guestCount': instance.guestCount,

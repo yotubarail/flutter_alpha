@@ -12,63 +12,70 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Item _$ItemFromJson(Map<String, dynamic> json) {
-  return _Item.fromJson(json);
+Event _$EventFromJson(Map<String, dynamic> json) {
+  return _Event.fromJson(json);
 }
 
 /// @nodoc
-class _$ItemTearOff {
-  const _$ItemTearOff();
+class _$EventTearOff {
+  const _$EventTearOff();
 
-  _Item call(String title, String body, int guestCount) {
-    return _Item(
+  _Event call(String id, String title, String body, int guestCount) {
+    return _Event(
+      id,
       title,
       body,
       guestCount,
     );
   }
 
-  Item fromJson(Map<String, Object> json) {
-    return Item.fromJson(json);
+  Event fromJson(Map<String, Object> json) {
+    return Event.fromJson(json);
   }
 }
 
 /// @nodoc
-const $Item = _$ItemTearOff();
+const $Event = _$EventTearOff();
 
 /// @nodoc
-mixin _$Item {
+mixin _$Event {
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
   int get guestCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ItemCopyWith<Item> get copyWith => throw _privateConstructorUsedError;
+  $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ItemCopyWith<$Res> {
-  factory $ItemCopyWith(Item value, $Res Function(Item) then) =
-      _$ItemCopyWithImpl<$Res>;
-  $Res call({String title, String body, int guestCount});
+abstract class $EventCopyWith<$Res> {
+  factory $EventCopyWith(Event value, $Res Function(Event) then) =
+      _$EventCopyWithImpl<$Res>;
+  $Res call({String id, String title, String body, int guestCount});
 }
 
 /// @nodoc
-class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
-  _$ItemCopyWithImpl(this._value, this._then);
+class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
+  _$EventCopyWithImpl(this._value, this._then);
 
-  final Item _value;
+  final Event _value;
   // ignore: unused_field
-  final $Res Function(Item) _then;
+  final $Res Function(Event) _then;
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? title = freezed,
     Object? body = freezed,
     Object? guestCount = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -86,29 +93,34 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
-  factory _$ItemCopyWith(_Item value, $Res Function(_Item) then) =
-      __$ItemCopyWithImpl<$Res>;
+abstract class _$EventCopyWith<$Res> implements $EventCopyWith<$Res> {
+  factory _$EventCopyWith(_Event value, $Res Function(_Event) then) =
+      __$EventCopyWithImpl<$Res>;
   @override
-  $Res call({String title, String body, int guestCount});
+  $Res call({String id, String title, String body, int guestCount});
 }
 
 /// @nodoc
-class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
-    implements _$ItemCopyWith<$Res> {
-  __$ItemCopyWithImpl(_Item _value, $Res Function(_Item) _then)
-      : super(_value, (v) => _then(v as _Item));
+class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
+    implements _$EventCopyWith<$Res> {
+  __$EventCopyWithImpl(_Event _value, $Res Function(_Event) _then)
+      : super(_value, (v) => _then(v as _Event));
 
   @override
-  _Item get _value => super._value as _Item;
+  _Event get _value => super._value as _Event;
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? title = freezed,
     Object? body = freezed,
     Object? guestCount = freezed,
   }) {
-    return _then(_Item(
+    return _then(_Event(
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -127,12 +139,14 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Item with DiagnosticableTreeMixin implements _Item {
-  const _$_Item(this.title, this.body, this.guestCount);
+class _$_Event with DiagnosticableTreeMixin implements _Event {
+  const _$_Event(this.id, this.title, this.body, this.guestCount);
 
-  factory _$_Item.fromJson(Map<String, dynamic> json) =>
-      _$_$_ItemFromJson(json);
+  factory _$_Event.fromJson(Map<String, dynamic> json) =>
+      _$_$_EventFromJson(json);
 
+  @override
+  final String id;
   @override
   final String title;
   @override
@@ -142,14 +156,15 @@ class _$_Item with DiagnosticableTreeMixin implements _Item {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Item(title: $title, body: $body, guestCount: $guestCount)';
+    return 'Event(id: $id, title: $title, body: $body, guestCount: $guestCount)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Item'))
+      ..add(DiagnosticsProperty('type', 'Event'))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('body', body))
       ..add(DiagnosticsProperty('guestCount', guestCount));
@@ -158,7 +173,9 @@ class _$_Item with DiagnosticableTreeMixin implements _Item {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Item &&
+        (other is _Event &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.body, body) ||
@@ -171,26 +188,30 @@ class _$_Item with DiagnosticableTreeMixin implements _Item {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(body) ^
       const DeepCollectionEquality().hash(guestCount);
 
   @JsonKey(ignore: true)
   @override
-  _$ItemCopyWith<_Item> get copyWith =>
-      __$ItemCopyWithImpl<_Item>(this, _$identity);
+  _$EventCopyWith<_Event> get copyWith =>
+      __$EventCopyWithImpl<_Event>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ItemToJson(this);
+    return _$_$_EventToJson(this);
   }
 }
 
-abstract class _Item implements Item {
-  const factory _Item(String title, String body, int guestCount) = _$_Item;
+abstract class _Event implements Event {
+  const factory _Event(String id, String title, String body, int guestCount) =
+      _$_Event;
 
-  factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
+  factory _Event.fromJson(Map<String, dynamic> json) = _$_Event.fromJson;
 
+  @override
+  String get id => throw _privateConstructorUsedError;
   @override
   String get title => throw _privateConstructorUsedError;
   @override
@@ -199,5 +220,5 @@ abstract class _Item implements Item {
   int get guestCount => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ItemCopyWith<_Item> get copyWith => throw _privateConstructorUsedError;
+  _$EventCopyWith<_Event> get copyWith => throw _privateConstructorUsedError;
 }

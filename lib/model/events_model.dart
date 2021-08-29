@@ -10,12 +10,13 @@ part 'events_model.g.dart';
 final eventsProvider = FutureProvider.autoDispose((ref) async {
   final snapshot =
       await FirebaseFirestore.instance.collectionGroup('events').get();
-  final events = snapshot.docs.map((doc) => Item.fromJson(doc.data()));
+  final events = snapshot.docs.map((doc) => Event.fromJson(doc.data()));
   return events.toList();
 });
 
 @freezed
-abstract class Item with _$Item {
-  const factory Item(String title, String body, int guestCount) = _Item;
-  factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+abstract class Event with _$Event {
+  const factory Event(String id, String title, String body, int guestCount) =
+      _Event;
+  factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
 }

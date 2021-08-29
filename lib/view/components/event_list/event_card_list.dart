@@ -8,18 +8,20 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 // 参照ファイル
 import '/model/events_model.dart';
 import '/view_model/signin_view_model.dart';
+import '/view/event_detail.dart';
 
 class EventCardList extends HookWidget {
   const EventCardList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final deviceHeight = MediaQuery.of(context).size.height;
-    final eventsList = useProvider(eventsProvider);
+    final screenMaxHeight = MediaQuery.of(context).size.height;
+    final eventList = useProvider(eventsProvider);
 
     return SizedBox(
-      height: deviceHeight * 0.8,
-      child: eventsList.when(
+      height: screenMaxHeight * 0.8,
+      // child: eventsList.data;
+      child: eventList.when(
         data: (query) {
           return ListView.builder(
             itemCount: query.length,
@@ -32,7 +34,7 @@ class EventCardList extends HookWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute<void>(
                         builder: (context) {
-                          return const Scaffold();
+                          return EventDetailPage(event: query[index]);
                         },
                       ),
                     );
