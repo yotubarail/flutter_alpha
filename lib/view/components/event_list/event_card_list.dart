@@ -1,14 +1,12 @@
 // 依存パッケージ
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // 参照ファイル
 import '/model/events_model.dart';
-import '/view_model/signin_view_model.dart';
-import '/view/event_detail.dart';
+import '/view/event_detail_view.dart';
 
 class EventCardList extends HookWidget {
   const EventCardList({Key? key}) : super(key: key);
@@ -20,35 +18,9 @@ class EventCardList extends HookWidget {
 
     return SizedBox(
       height: screenMaxHeight * 0.8,
-      // child: eventsList.data;
       child: eventList.when(
-        data: (query) {
-          return ListView.builder(
-            itemCount: query.length,
-            itemBuilder: (context, index) {
-              return Card(
-                margin: const EdgeInsets.all(8),
-                color: Colors.blue[100],
-                child: InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        builder: (context) {
-                          return EventDetailPage(event: query[index]);
-                        },
-                      ),
-                    );
-                  },
-                  child: SizedBox(
-                    height: 64,
-                    child: Center(
-                      child: Text(query[index].title),
-                    ),
-                  ),
-                ),
-              );
-            },
-          );
+        data: (events) {
+          return _eventCardList(context, events);
         },
         loading: () {
           return const Center(
@@ -60,6 +32,39 @@ class EventCardList extends HookWidget {
             child: Text(err.toString()),
           );
         },
+      ),
+    );
+  }
+
+  Widget _eventCardList(BuildContext context, List<Event> events) {
+    return ListView.builder(
+      itemCount: events.length,
+      itemBuilder: (context, index) {
+        return _eventCard(context, events[index]);
+      },
+    );
+  }
+
+  Widget _eventCard(BuildContext context, Event event) {
+    return Card(
+      margin: const EdgeInsets.all(8),
+      color: Colors.blue[100],
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (context) {
+                return EventDetailPage(event: event);
+              },
+            ),
+          );
+        },
+        child: SizedBox(
+          height: 64,
+          child: Center(
+            child: Text(event.title),
+          ),
+        ),
       ),
     );
   }

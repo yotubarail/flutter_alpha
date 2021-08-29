@@ -1,15 +1,15 @@
 // 依存パッケージ
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // 参照ファイル
+import '/model/auth_model.dart';
 import '/view/event_list_view.dart';
 import '/view/signin_view.dart';
-import 'model/auth_model.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();

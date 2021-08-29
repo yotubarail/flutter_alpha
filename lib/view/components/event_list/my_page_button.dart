@@ -3,9 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// 参照ファイル
-import '/view_model/signin_view_model.dart';
-
 class MyPageButton extends ConsumerWidget {
   const MyPageButton({Key? key}) : super(key: key);
 
