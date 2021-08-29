@@ -20,7 +20,7 @@ class EventDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detail'),
+        title: const Text('Event Detail'),
       ),
       body: Column(
         mainAxisSize: MainAxisSize.min,
