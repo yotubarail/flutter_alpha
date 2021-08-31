@@ -6,9 +6,7 @@ final authStreamProvider = StreamProvider.autoDispose((ref) {
   return FirebaseAuth.instance.authStateChanges();
 });
 
-class AuthModel {
-  Future signOut() async => FirebaseAuth.instance.signOut();
-
+class Auth {
   Future emailSignin({
     required String email,
     required String password,
@@ -28,4 +26,6 @@ class AuthModel {
       password: password,
     );
   }
+
+  Future signOut() async => FirebaseAuth.instance.signOut();
 }

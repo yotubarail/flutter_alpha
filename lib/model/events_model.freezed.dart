@@ -20,12 +20,18 @@ Event _$EventFromJson(Map<String, dynamic> json) {
 class _$EventTearOff {
   const _$EventTearOff();
 
-  _Event call(String id, String title, String body, int guestCount) {
+  _Event call(
+      {String id = '',
+      String title = '',
+      String body = '',
+      String uid = '',
+      int guestCount = 0}) {
     return _Event(
-      id,
-      title,
-      body,
-      guestCount,
+      id: id,
+      title: title,
+      body: body,
+      uid: uid,
+      guestCount: guestCount,
     );
   }
 
@@ -42,6 +48,7 @@ mixin _$Event {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
+  String get uid => throw _privateConstructorUsedError;
   int get guestCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +60,7 @@ mixin _$Event {
 abstract class $EventCopyWith<$Res> {
   factory $EventCopyWith(Event value, $Res Function(Event) then) =
       _$EventCopyWithImpl<$Res>;
-  $Res call({String id, String title, String body, int guestCount});
+  $Res call({String id, String title, String body, String uid, int guestCount});
 }
 
 /// @nodoc
@@ -69,6 +76,7 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
     Object? id = freezed,
     Object? title = freezed,
     Object? body = freezed,
+    Object? uid = freezed,
     Object? guestCount = freezed,
   }) {
     return _then(_value.copyWith(
@@ -84,6 +92,10 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String,
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
       guestCount: guestCount == freezed
           ? _value.guestCount
           : guestCount // ignore: cast_nullable_to_non_nullable
@@ -97,7 +109,7 @@ abstract class _$EventCopyWith<$Res> implements $EventCopyWith<$Res> {
   factory _$EventCopyWith(_Event value, $Res Function(_Event) then) =
       __$EventCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String title, String body, int guestCount});
+  $Res call({String id, String title, String body, String uid, int guestCount});
 }
 
 /// @nodoc
@@ -114,22 +126,27 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
     Object? id = freezed,
     Object? title = freezed,
     Object? body = freezed,
+    Object? uid = freezed,
     Object? guestCount = freezed,
   }) {
     return _then(_Event(
-      id == freezed
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title == freezed
+      title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      body == freezed
+      body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String,
-      guestCount == freezed
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      guestCount: guestCount == freezed
           ? _value.guestCount
           : guestCount // ignore: cast_nullable_to_non_nullable
               as int,
@@ -140,23 +157,35 @@ class __$EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Event with DiagnosticableTreeMixin implements _Event {
-  const _$_Event(this.id, this.title, this.body, this.guestCount);
+  const _$_Event(
+      {this.id = '',
+      this.title = '',
+      this.body = '',
+      this.uid = '',
+      this.guestCount = 0});
 
   factory _$_Event.fromJson(Map<String, dynamic> json) =>
       _$_$_EventFromJson(json);
 
+  @JsonKey(defaultValue: '')
   @override
   final String id;
+  @JsonKey(defaultValue: '')
   @override
   final String title;
+  @JsonKey(defaultValue: '')
   @override
   final String body;
+  @JsonKey(defaultValue: '')
+  @override
+  final String uid;
+  @JsonKey(defaultValue: 0)
   @override
   final int guestCount;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Event(id: $id, title: $title, body: $body, guestCount: $guestCount)';
+    return 'Event(id: $id, title: $title, body: $body, uid: $uid, guestCount: $guestCount)';
   }
 
   @override
@@ -167,6 +196,7 @@ class _$_Event with DiagnosticableTreeMixin implements _Event {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('body', body))
+      ..add(DiagnosticsProperty('uid', uid))
       ..add(DiagnosticsProperty('guestCount', guestCount));
   }
 
@@ -180,6 +210,8 @@ class _$_Event with DiagnosticableTreeMixin implements _Event {
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.body, body) ||
                 const DeepCollectionEquality().equals(other.body, body)) &&
+            (identical(other.uid, uid) ||
+                const DeepCollectionEquality().equals(other.uid, uid)) &&
             (identical(other.guestCount, guestCount) ||
                 const DeepCollectionEquality()
                     .equals(other.guestCount, guestCount)));
@@ -191,6 +223,7 @@ class _$_Event with DiagnosticableTreeMixin implements _Event {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(body) ^
+      const DeepCollectionEquality().hash(uid) ^
       const DeepCollectionEquality().hash(guestCount);
 
   @JsonKey(ignore: true)
@@ -205,8 +238,12 @@ class _$_Event with DiagnosticableTreeMixin implements _Event {
 }
 
 abstract class _Event implements Event {
-  const factory _Event(String id, String title, String body, int guestCount) =
-      _$_Event;
+  const factory _Event(
+      {String id,
+      String title,
+      String body,
+      String uid,
+      int guestCount}) = _$_Event;
 
   factory _Event.fromJson(Map<String, dynamic> json) = _$_Event.fromJson;
 
@@ -216,6 +253,8 @@ abstract class _Event implements Event {
   String get title => throw _privateConstructorUsedError;
   @override
   String get body => throw _privateConstructorUsedError;
+  @override
+  String get uid => throw _privateConstructorUsedError;
   @override
   int get guestCount => throw _privateConstructorUsedError;
   @override

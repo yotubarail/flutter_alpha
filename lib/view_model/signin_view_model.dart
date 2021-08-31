@@ -16,13 +16,13 @@ final signinViewModelProvider = StateNotifierProvider<SigninViewModel, dynamic>(
 class SigninViewModel extends StateNotifier<SigninData> {
   SigninViewModel() : super(const SigninData());
 
-  final authModel = AuthModel();
+  final auth = Auth();
 
   Future emailSignin() async {
     if (validateEmail() || validatePassword()) {
       print('フォームに正しく入力してください');
     } else {
-      await authModel.emailSignin(
+      await auth.emailSignin(
         email: state.email,
         password: state.password,
       );
@@ -33,7 +33,7 @@ class SigninViewModel extends StateNotifier<SigninData> {
     if (validateEmail() || validatePassword()) {
       print('フォームに正しく入力してください');
     } else {
-      await authModel.emailSignup(
+      await auth.emailSignup(
         email: state.email,
         password: state.password,
       );

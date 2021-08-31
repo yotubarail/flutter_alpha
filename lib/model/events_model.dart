@@ -34,9 +34,31 @@ final myEventsProvider = FutureProvider.autoDispose((ref) async {
   return events.toList();
 });
 
+class EventsDB {
+  Future createEvent() async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc('IuXNsHP9h1S97GPvpexNxugUcPE2')
+        .collection('events')
+        .add(<String, dynamic>{'title': 'test'});
+  }
+
+  Future updateEvent(Event event) async {
+    await FirebaseFirestore.instance
+        .collection('/users/${event.uid}/events/')
+        .doc(event.id)
+        .update(event.toJson());
+  }
+}
+
 @freezed
 abstract class Event with _$Event {
-  const factory Event(String id, String title, String body, int guestCount) =
-      _Event;
+  const factory Event({
+    @Default('') String id,
+    @Default('') String title,
+    @Default('') String body,
+    @Default('') String uid,
+    @Default(0) int guestCount,
+  }) = _Event;
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
 }

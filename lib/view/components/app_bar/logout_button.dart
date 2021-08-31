@@ -10,11 +10,11 @@ class LogoutButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authModel = AuthModel();
+    final auth = Auth();
     return IconButton(
       icon: const Icon(Icons.logout),
       onPressed: () async {
-        await authModel.signOut();
+        await auth.signOut();
       },
     );
   }
