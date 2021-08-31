@@ -20,8 +20,17 @@ class MyEventDetailViewModel extends StateNotifier<Event> {
       id: event.id,
       title: event.title,
       body: event.title,
+      guestCount: event.guestCount,
       uid: uid,
     );
+  }
+
+  void changeTitle(String value) {
+    state = state.copyWith(title: value);
+  }
+
+  void changeBody(String value) {
+    state = state.copyWith(body: value);
   }
 
   Future createEvent() async {

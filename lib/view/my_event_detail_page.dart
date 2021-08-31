@@ -34,11 +34,11 @@ class MyEventDetailPage extends HookWidget {
       ),
       body: Column(
         mainAxisSize: MainAxisSize.min,
-        children: [
-          TitleForm(title: event.title),
-          EventBody(body: event.body),
-          GuestCount(guestCount: event.guestCount),
-          const JoinButton(),
+        children: const [
+          TitleForm(),
+          EventBody(),
+          GuestCount(),
+          JoinButton(),
         ],
       ),
     );
