@@ -12,15 +12,14 @@ class GuestCount extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myEventDetailViewModel =
-        useProvider(myEventDetailViewModelProvider.notifier);
+    final state = useProvider(myEventDetailViewModelProvider);
 
     return Container(
       margin: const EdgeInsets.all(4),
       padding: const EdgeInsets.all(8),
       child: Center(
         child: Text(
-          '申し込み数：${myEventDetailViewModel.state.guestCount}人',
+          '申し込み数：${state.guestCount}人',
           style: const TextStyle(fontSize: 16),
         ),
       ),

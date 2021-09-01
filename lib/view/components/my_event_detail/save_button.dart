@@ -12,12 +12,11 @@ class SaveButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myEventDetailViewModel =
-        useProvider(myEventDetailViewModelProvider.notifier);
+    final notifier = useProvider(myEventDetailViewModelProvider.notifier);
     return SizedBox(
       width: 200,
       child: ElevatedButton(
-        onPressed: myEventDetailViewModel.updateEvent,
+        onPressed: notifier.updateEvent,
         style: ButtonStyle(
           padding: MaterialStateProperty.all(
             const EdgeInsets.all(20),

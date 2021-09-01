@@ -12,8 +12,7 @@ class DeleteButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myEventDetailViewModel =
-        useProvider(myEventDetailViewModelProvider.notifier);
+    final notifier = useProvider(myEventDetailViewModelProvider.notifier);
     return Container(
       margin: const EdgeInsets.all(4),
       child: TextButton(
@@ -21,7 +20,7 @@ class DeleteButton extends HookWidget {
           primary: Colors.red,
         ),
         onPressed: () {
-          myEventDetailViewModel.deleteEvent();
+          notifier.deleteEvent();
           Navigator.of(context).pop();
         },
         child: const Text('イベント削除'),

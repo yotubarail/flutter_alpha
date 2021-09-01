@@ -13,16 +13,16 @@ class EventBody extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final screenMaxHeight = MediaQuery.of(context).size.height;
-    final myEventDetailViewModel =
-        useProvider(myEventDetailViewModelProvider.notifier);
+    final state = useProvider(myEventDetailViewModelProvider);
+    final notifier = useProvider(myEventDetailViewModelProvider.notifier);
 
     return Container(
       height: screenMaxHeight * 0.6,
       padding: const EdgeInsets.all(8),
       margin: const EdgeInsets.only(left: 8, right: 8),
       child: TextFormField(
-        initialValue: myEventDetailViewModel.state.body,
-        onChanged: myEventDetailViewModel.changeBody,
+        initialValue: state.body,
+        onChanged: notifier.changeBody,
         maxLines: 100,
         decoration: const InputDecoration(
           border: OutlineInputBorder(),

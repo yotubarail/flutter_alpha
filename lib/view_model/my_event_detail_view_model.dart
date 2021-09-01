@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '/model/events_model.dart';
 
 final myEventDetailViewModelProvider =
-    StateNotifierProvider<MyEventDetailViewModel, dynamic>(
+    StateNotifierProvider<MyEventDetailViewModel, Event>(
   (ref) => MyEventDetailViewModel(),
 );
 

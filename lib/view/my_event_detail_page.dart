@@ -28,6 +28,7 @@ class MyEventDetailPage extends HookWidget {
       event: event,
       uid: user.uid,
     );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Event Detail'),
