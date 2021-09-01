@@ -27,14 +27,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: '勉強会プラットフォーム',
-      home: InitialView(),
+      home: _InitialView(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class InitialView extends HookWidget {
-  const InitialView({Key? key}) : super(key: key);
+class _InitialView extends HookWidget {
+  const _InitialView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final userStream = useProvider(authStreamProvider);
