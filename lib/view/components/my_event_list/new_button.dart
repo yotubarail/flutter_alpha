@@ -18,7 +18,7 @@ class NewButton extends HookWidget {
   Widget build(BuildContext context) {
     final uid = Auth().getCurrentUser().uid;
     final newId = randomString(20);
-    final newEvent = Event(id: newId, uid: uid);
+    final newEvent = Event(id: newId, uid: uid, title: '新規イベント');
     final myEventDetailViewModel =
         useProvider(myEventDetailViewModelProvider.notifier);
 
