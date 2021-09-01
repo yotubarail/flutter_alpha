@@ -19,21 +19,20 @@ final eventsProvider = FutureProvider.autoDispose((ref) async {
   return events.toList();
 });
 
-final myEventsProvider = FutureProvider.autoDispose((ref) async {
-  final user = await ref.watch(authStreamProvider.last);
-  late String uid;
-  if (user != null) {
-    uid = user.uid;
-  }
-  final snapshot = await FirebaseFirestore.instance
-      .collection('users')
-      .doc(uid)
-      .collection('events')
-      .get();
-  final events = snapshot.docs.map((doc) => Event.fromJson(doc.data()));
-  return events.toList();
+final myEventsProvider = StreamProvider.autoDispose((ref) {
+  final user = Auth().getCurrentUser();
+  final stream = FirebaseFirestore.instance
+      .collection('/users/${user.uid}/events/')
+      .snapshots();
+  final events = stream.map(
+    (snapshot) => snapshot.docs.map(
+      (doc) => Event.fromJson(doc.data()),
+    ),
+  );
+  return events;
 });
 
+//todo
 class EventsDB {
   Future createEvent() async {
     await FirebaseFirestore.instance

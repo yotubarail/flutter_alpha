@@ -19,7 +19,7 @@ class MyEventDetailViewModel extends StateNotifier<Event> {
     state = state.copyWith(
       id: event.id,
       title: event.title,
-      body: event.title,
+      body: event.body,
       guestCount: event.guestCount,
       uid: uid,
     );

@@ -28,4 +28,13 @@ class Auth {
   }
 
   Future signOut() async => FirebaseAuth.instance.signOut();
+
+  User getCurrentUser() {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      return user;
+    } else {
+      throw 'no user';
+    }
+  }
 }

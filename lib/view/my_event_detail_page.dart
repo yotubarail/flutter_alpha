@@ -22,8 +22,7 @@ class MyEventDetailPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authFuture = useProvider(authStreamProvider.last);
-    final user = useFuture(authFuture).data!;
+    final user = Auth().getCurrentUser();
     useProvider(myEventDetailViewModelProvider.notifier).initEvent(
       event: event,
       uid: user.uid,

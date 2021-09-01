@@ -20,7 +20,7 @@ class MyEventCardList extends HookWidget {
       height: screenMaxHeight * 0.8,
       child: eventList.when(
         data: (events) {
-          return _eventCardList(context, events);
+          return _eventCardList(context, events.toList());
         },
         loading: () {
           return const Center(
