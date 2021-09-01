@@ -47,3 +47,7 @@ app.*.map.json
 
 # firebaseConfig 
 /web/index.html
+
+# freezed
+/lib/**/*.freezed.dart
+/lib/**/*.g.dart
