@@ -11,9 +11,8 @@ class GuestCount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenMaxHeight = MediaQuery.of(context).size.height;
     return Container(
-      height: screenMaxHeight * 0.1,
+      margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(8),
       child: Center(
         child: Text(
