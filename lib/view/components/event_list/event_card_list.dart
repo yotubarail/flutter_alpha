@@ -61,8 +61,9 @@ class EventCardList extends HookWidget {
         },
         child: SizedBox(
           height: 64,
-          child: Center(
-            child: Text(event.title),
+          child: ListTile(
+            title: Text(event.title),
+            subtitle: Text(event.body),
           ),
         ),
       ),
