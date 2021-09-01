@@ -40,4 +40,8 @@ class MyEventDetailViewModel extends StateNotifier<Event> {
   Future updateEvent() async {
     await eventsDB.updateEvent(state);
   }
+
+  Future deleteEvent() async {
+    await eventsDB.deleteEvent(state);
+  }
 }

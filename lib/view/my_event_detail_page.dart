@@ -8,6 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '/model/auth_model.dart';
 import '/model/events_model.dart';
 import '/view/components/my_event_detail/body_form.dart';
+import '/view/components/my_event_detail/delete_button.dart';
 import '/view/components/my_event_detail/guest_count.dart';
 import '/view/components/my_event_detail/save_button.dart';
 import '/view/components/my_event_detail/title_form.dart';
@@ -38,6 +39,7 @@ class MyEventDetailPage extends HookWidget {
           EventBody(),
           GuestCount(),
           SaveButton(),
+          DeleteButton(),
         ],
       ),
     );

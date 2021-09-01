@@ -32,7 +32,6 @@ final myEventsProvider = StreamProvider.autoDispose((ref) {
   return events;
 });
 
-//todo
 class EventsDB {
   Future createEvent(Event event) async {
     final user = Auth().getCurrentUser();
@@ -47,6 +46,13 @@ class EventsDB {
         .collection('/users/${event.uid}/events/')
         .doc(event.id)
         .update(event.toJson());
+  }
+
+  Future deleteEvent(Event event) async {
+    await FirebaseFirestore.instance
+        .collection('/users/${event.uid}/events/')
+        .doc(event.id)
+        .delete();
   }
 }
 
