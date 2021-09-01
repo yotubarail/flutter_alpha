@@ -5,7 +5,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // 参照ファイル
-// import '/model/auth_model.dart';
 import '/model/events_model.dart';
 import '/view/components/event_detail/event_body.dart';
 import '/view/components/event_detail/event_title.dart';
@@ -22,8 +21,6 @@ class EventDetailPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final userFuture = Auth().getCurrentUser();
-    // final user = useFuture(userFuture);
     useProvider(eventDetailViewModelProvider.notifier).initEvent(event: event);
 
     return Scaffold(
