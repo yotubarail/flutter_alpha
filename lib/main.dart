@@ -37,13 +37,28 @@ class InitialView extends HookWidget {
   const InitialView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final authFuture = useProvider(authStreamProvider.last);
-    final userData = useFuture(authFuture).data;
+    final userStream = useProvider(authStreamProvider);
 
-    if (userData == null) {
-      return const SigninPage();
-    } else {
-      return const EventListPage();
-    }
+    return userStream.when(
+      data: (user) {
+        if (user == null) {
+          return const SigninPage();
+        } else {
+          return const EventListPage();
+        }
+      },
+      loading: () {
+        return const Scaffold(
+          body: Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      },
+      error: (err, stackTrace) {
+        return Center(
+          child: Text(err.toString()),
+        );
+      },
+    );
   }
 }

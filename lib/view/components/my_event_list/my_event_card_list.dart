@@ -23,8 +23,10 @@ class MyEventCardList extends HookWidget {
           return _eventCardList(context, events.toList());
         },
         loading: () {
-          return const Center(
-            child: Text('読込中...'),
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
           );
         },
         error: (err, stackTrace) {
