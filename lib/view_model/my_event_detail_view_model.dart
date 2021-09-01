@@ -33,9 +33,8 @@ class MyEventDetailViewModel extends StateNotifier<Event> {
     state = state.copyWith(body: value);
   }
 
-  Future createEvent() async {
-    // await eventsDB.createEvent();
-    // await eventsDB.updateEvent();
+  Future createEvent(Event event) async {
+    await eventsDB.createEvent(event);
   }
 
   Future updateEvent() async {

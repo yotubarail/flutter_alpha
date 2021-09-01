@@ -34,12 +34,12 @@ final myEventsProvider = StreamProvider.autoDispose((ref) {
 
 //todo
 class EventsDB {
-  Future createEvent() async {
+  Future createEvent(Event event) async {
+    final user = Auth().getCurrentUser();
     await FirebaseFirestore.instance
-        .collection('users')
-        .doc('IuXNsHP9h1S97GPvpexNxugUcPE2')
-        .collection('events')
-        .add(<String, dynamic>{'title': 'test'});
+        .collection('/users/${user.uid}/events/')
+        .doc(event.id)
+        .set(event.toJson());
   }
 
   Future updateEvent(Event event) async {

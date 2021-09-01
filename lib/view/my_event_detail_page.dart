@@ -37,7 +37,7 @@ class MyEventDetailPage extends HookWidget {
           TitleForm(),
           EventBody(),
           GuestCount(),
-          JoinButton(),
+          SaveButton(),
         ],
       ),
     );

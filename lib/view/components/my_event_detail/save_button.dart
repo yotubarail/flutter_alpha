@@ -7,8 +7,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 // 参照ファイル
 import '/view_model/my_event_detail_view_model.dart';
 
-class JoinButton extends HookWidget {
-  const JoinButton({Key? key}) : super(key: key);
+class SaveButton extends HookWidget {
+  const SaveButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

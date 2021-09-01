@@ -5,7 +5,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 // 参照ファイル
 import '/view/components/app_bar/logout_button.dart';
-import '/view/components/my_event_list/My_event_card_list.dart';
+import '/view/components/my_event_list/my_event_card_list.dart';
+import '/view/components/my_event_list/new_button.dart';
 
 class MyEventListPage extends HookWidget {
   const MyEventListPage({Key? key}) : super(key: key);
@@ -21,6 +22,7 @@ class MyEventListPage extends HookWidget {
         mainAxisSize: MainAxisSize.min,
         children: const [
           MyEventCardList(),
+          NewButton(),
         ],
       ),
     );
