@@ -8,22 +8,18 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '/view_model/event_detail_view_model.dart';
 
 class GuestCount extends HookWidget {
-  const GuestCount({
-    Key? key,
-    required this.guestCount,
-  }) : super(key: key);
-  final int guestCount;
+  const GuestCount({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final eventDetailViewModel = useProvider(eventDetailViewModelProvider);
+    final state = useProvider(eventDetailViewModelProvider);
 
     return Container(
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(8),
       child: Center(
         child: Text(
-          '申し込み数：${eventDetailViewModel.guestCount}人',
+          '申し込み数：${state.guestCount}人',
           style: const TextStyle(fontSize: 16),
         ),
       ),

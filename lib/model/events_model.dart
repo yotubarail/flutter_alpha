@@ -57,6 +57,19 @@ class EventsDB {
         .doc(event.id)
         .delete();
   }
+
+  Future incrementGuestCount(Event event) async {
+    final documentReference = FirebaseFirestore.instance
+        .collection('/users/${event.uid}/events/')
+        .doc(event.id);
+    final snapshot = await documentReference.get();
+    final increment = Event.fromJson(snapshot.data()!).guestCount + 1;
+
+    await FirebaseFirestore.instance
+        .collection('/users/${event.uid}/events/')
+        .doc(event.id)
+        .update({'guestCount': increment});
+  }
 }
 
 @freezed

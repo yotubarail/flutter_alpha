@@ -1,18 +1,20 @@
 // 依存パッケージ
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class EventBody extends StatelessWidget {
-  const EventBody({
-    Key? key,
-    required this.body,
-  }) : super(key: key);
-  final String body;
+// 参照ファイル
+import '/view_model/event_detail_view_model.dart';
+
+class EventBody extends HookWidget {
+  const EventBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final screenMaxHeight = MediaQuery.of(context).size.height;
     final screenMaxWidth = MediaQuery.of(context).size.width;
+    final state = useProvider(eventDetailViewModelProvider);
 
     return Container(
       height: screenMaxHeight * 0.6,
@@ -24,7 +26,7 @@ class EventBody extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(
-        body,
+        state.body,
         style: const TextStyle(fontSize: 16),
       ),
     );
