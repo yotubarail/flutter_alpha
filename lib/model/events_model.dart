@@ -13,8 +13,10 @@ part 'events_model.freezed.dart';
 part 'events_model.g.dart';
 
 final eventsProvider = FutureProvider.autoDispose((ref) async {
-  final snapshot =
-      await FirebaseFirestore.instance.collectionGroup('events').get();
+  final snapshot = await FirebaseFirestore.instance
+      .collectionGroup('events')
+      .orderBy('updateTime', descending: true)
+      .get();
   final events = snapshot.docs.map((doc) => Event.fromJson(doc.data()));
   return events.toList();
 });
@@ -23,6 +25,7 @@ final myEventsProvider = StreamProvider.autoDispose((ref) {
   final user = Auth().getCurrentUser();
   final stream = FirebaseFirestore.instance
       .collection('/users/${user.uid}/events/')
+      .orderBy('updateTime', descending: true)
       .snapshots();
   final events = stream.map(
     (snapshot) => snapshot.docs.map(
@@ -64,6 +67,16 @@ abstract class Event with _$Event {
     @Default('') String body,
     @Default('') String uid,
     @Default(0) int guestCount,
+    @Default(null) @TimestampConverter() DateTime? updateTime,
   }) = _Event;
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
+}
+
+class TimestampConverter implements JsonConverter<DateTime?, Timestamp?> {
+  const TimestampConverter();
+  @override
+  DateTime? fromJson(Timestamp? json) => json?.toDate();
+  @override
+  Timestamp? toJson(DateTime? object) =>
+      object == null ? null : Timestamp.fromDate(object);
 }

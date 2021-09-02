@@ -65,7 +65,7 @@ class MyEventCardList extends HookWidget {
           height: 64,
           child: ListTile(
             title: Text(event.title),
-            subtitle: Text(event.body),
+            subtitle: Text(event.updateTime.toString()),
           ),
         ),
       ),

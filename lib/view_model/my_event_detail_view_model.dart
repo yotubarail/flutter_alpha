@@ -1,4 +1,5 @@
 // 依存パッケージ
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -38,6 +39,7 @@ class MyEventDetailViewModel extends StateNotifier<Event> {
   }
 
   Future updateEvent() async {
+    state = state.copyWith(updateTime: DateTime.now());
     await eventsDB.updateEvent(state);
   }
 
