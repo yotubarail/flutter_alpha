@@ -65,10 +65,7 @@ class EventsDB {
     final snapshot = await documentReference.get();
     final increment = Event.fromJson(snapshot.data()!).guestCount + 1;
 
-    await FirebaseFirestore.instance
-        .collection('/users/${event.uid}/events/')
-        .doc(event.id)
-        .update({'guestCount': increment});
+    await documentReference.update({'guestCount': increment});
   }
 }
 
