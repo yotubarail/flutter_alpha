@@ -25,15 +25,6 @@ final eventsProvider = StreamProvider.autoDispose((ref) {
   return events;
 });
 
-// final eventsProvider = FutureProvider.autoDispose((ref) async {
-//   final snapshot = await FirebaseFirestore.instance
-//       .collectionGroup('events')
-//       .orderBy('updateTime', descending: true)
-//       .get();
-//   final events = snapshot.docs.map((doc) => Event.fromJson(doc.data()));
-//   return events.toList();
-// });
-
 final myEventsProvider = StreamProvider.autoDispose((ref) {
   final user = Auth().getCurrentUser();
   final stream = FirebaseFirestore.instance
