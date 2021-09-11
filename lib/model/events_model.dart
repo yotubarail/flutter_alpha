@@ -12,14 +12,27 @@ import '/model/auth_model.dart';
 part 'events_model.freezed.dart';
 part 'events_model.g.dart';
 
-final eventsProvider = FutureProvider.autoDispose((ref) async {
-  final snapshot = await FirebaseFirestore.instance
+final eventsProvider = StreamProvider.autoDispose((ref) {
+  final stream = FirebaseFirestore.instance
       .collectionGroup('events')
       .orderBy('updateTime', descending: true)
-      .get();
-  final events = snapshot.docs.map((doc) => Event.fromJson(doc.data()));
-  return events.toList();
+      .snapshots();
+  final events = stream.map(
+    (snapshot) => snapshot.docs.map(
+      (doc) => Event.fromJson(doc.data()),
+    ),
+  );
+  return events;
 });
+
+// final eventsProvider = FutureProvider.autoDispose((ref) async {
+//   final snapshot = await FirebaseFirestore.instance
+//       .collectionGroup('events')
+//       .orderBy('updateTime', descending: true)
+//       .get();
+//   final events = snapshot.docs.map((doc) => Event.fromJson(doc.data()));
+//   return events.toList();
+// });
 
 final myEventsProvider = StreamProvider.autoDispose((ref) {
   final user = Auth().getCurrentUser();
