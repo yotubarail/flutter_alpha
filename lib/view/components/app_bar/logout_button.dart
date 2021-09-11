@@ -15,7 +15,7 @@ class LogoutButton extends StatelessWidget {
       icon: const Icon(Icons.logout),
       onPressed: () async {
         await auth.signOut();
-        Navigator.of(context).pop();
+        Navigator.of(context).popUntil((route) => route.isFirst);
       },
     );
   }
