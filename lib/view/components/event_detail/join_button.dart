@@ -12,12 +12,12 @@ class JoinButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final notifier = useProvider(eventDetailViewModelProvider.notifier);
+    final stateNotifier = useProvider(eventDetailViewModelProvider.notifier);
 
     return SizedBox(
       width: 200,
       child: ElevatedButton(
-        onPressed: notifier.joinEvent,
+        onPressed: stateNotifier.joinEvent,
         style: ButtonStyle(
           padding: MaterialStateProperty.all(
             const EdgeInsets.all(20),

@@ -21,13 +21,13 @@ class NewButton extends HookWidget {
     final now = DateTime.now();
     final newEvent =
         Event(id: newId, uid: uid, title: '新規イベント', updateTime: now);
-    final notifier = useProvider(myEventDetailViewModelProvider.notifier);
+    final stateNotifier = useProvider(myEventDetailViewModelProvider.notifier);
 
     return SizedBox(
       width: 200,
       child: ElevatedButton(
         onPressed: () {
-          notifier.createEvent(newEvent);
+          stateNotifier.createEvent(newEvent);
           Navigator.of(context).push(
             MaterialPageRoute<void>(
               builder: (context) {

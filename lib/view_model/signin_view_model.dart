@@ -68,7 +68,7 @@ class SigninViewModel extends StateNotifier<SigninData> {
 @freezed
 abstract class SigninData with _$SigninData {
   const factory SigninData({
-    @Default('test@test.com') String email,
+    @Default('test@example.com') String email,
     @Default('P@ssw0rd') String password,
   }) = _SigninData;
 }

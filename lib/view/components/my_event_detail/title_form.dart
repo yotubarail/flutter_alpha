@@ -14,7 +14,7 @@ class TitleForm extends HookWidget {
   Widget build(BuildContext context) {
     final screenMaxHeight = MediaQuery.of(context).size.height;
     final state = useProvider(myEventDetailViewModelProvider);
-    final notifier = useProvider(myEventDetailViewModelProvider.notifier);
+    final stateNotifier = useProvider(myEventDetailViewModelProvider.notifier);
 
     return Container(
       height: screenMaxHeight * 0.1,
@@ -22,7 +22,7 @@ class TitleForm extends HookWidget {
       margin: const EdgeInsets.only(left: 8, right: 8),
       child: TextFormField(
         initialValue: state.title,
-        onChanged: notifier.changeTitle,
+        onChanged: stateNotifier.changeTitle,
         decoration: const InputDecoration(
           border: OutlineInputBorder(),
           labelText: 'タイトル',
