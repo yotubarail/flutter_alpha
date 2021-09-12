@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // 参照ファイル
+import '/model/auth_model.dart';
 import '/model/events_model.dart';
 import '/view/event_detail_page.dart';
 
@@ -48,6 +49,7 @@ class EventCardList extends HookWidget {
   }
 
   Widget _eventCard(BuildContext context, Event event) {
+    final uid = Auth().getCurrentUser().uid;
     return Card(
       margin: const EdgeInsets.all(8),
       color: Colors.blue[100],
@@ -66,6 +68,7 @@ class EventCardList extends HookWidget {
           child: ListTile(
             title: Text(event.title),
             subtitle: Text(event.updateTime.toString()),
+            trailing: event.uid == uid ? const Icon(Icons.face_rounded) : null,
           ),
         ),
       ),
