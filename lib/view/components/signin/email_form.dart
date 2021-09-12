@@ -13,16 +13,17 @@ class EmailForm extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final screenMaxWidth = MediaQuery.of(context).size.width;
-    final signinViewModel = useProvider(signinViewModelProvider.notifier);
+    final state = useProvider(signinViewModelProvider);
+    final stateNotifier = useProvider(signinViewModelProvider.notifier);
 
     return Container(
       margin: const EdgeInsets.all(8),
       width: screenMaxWidth * 0.7,
       child: TextFormField(
-        initialValue: signinViewModel.state.email,
-        onChanged: signinViewModel.changeEmail,
+        initialValue: state.email,
+        onChanged: stateNotifier.changeEmail,
         validator: (value) =>
-            signinViewModel.validateEmail() ? 'メールアドレスを入力してください' : null,
+            stateNotifier.validateEmail() ? 'メールアドレスを入力してください' : null,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: const InputDecoration(
           border: OutlineInputBorder(),

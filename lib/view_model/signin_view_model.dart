@@ -9,32 +9,48 @@ import '/model/auth_model.dart';
 // freezed生成ファイル
 part 'signin_view_model.freezed.dart';
 
-final signinViewModelProvider = StateNotifierProvider<SigninViewModel, dynamic>(
-  (ref) => SigninViewModel(),
+final infoTextProvider = StateProvider<String>((ref) => '');
+
+final signinViewModelProvider =
+    StateNotifierProvider<SigninViewModel, SigninData>(
+  (ref) {
+    final infoText = ref.watch(infoTextProvider);
+    return SigninViewModel(infoText);
+  },
 );
 
 class SigninViewModel extends StateNotifier<SigninData> {
-  SigninViewModel() : super(const SigninData());
+  SigninViewModel(this.infoText) : super(const SigninData());
+
+  final StateController<String> infoText;
 
   Future emailSignin() async {
     if (validateEmail() || validatePassword()) {
-      print('フォームに正しく入力してください');
+      infoText.state = 'error: フォームに正しく入力してください';
     } else {
-      await Auth().emailSignin(
-        email: state.email,
-        password: state.password,
-      );
+      try {
+        await Auth().emailSignin(
+          email: state.email,
+          password: state.password,
+        );
+      } on Exception catch (e) {
+        infoText.state = 'error：${e.toString()}';
+      }
     }
   }
 
   Future emailSignup() async {
     if (validateEmail() || validatePassword()) {
-      print('フォームに正しく入力してください');
+      infoText.state = 'error: フォームに正しく入力してください';
     } else {
-      await Auth().emailSignup(
-        email: state.email,
-        password: state.password,
-      );
+      try {
+        await Auth().emailSignup(
+          email: state.email,
+          password: state.password,
+        );
+      } on Exception catch (e) {
+        infoText.state = 'error：${e.toString()}';
+      }
     }
   }
 

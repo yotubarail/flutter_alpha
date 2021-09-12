@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '/view/components/signin/email_form.dart';
 import '/view/components/signin/email_signin_button.dart';
 import '/view/components/signin/email_signup_button.dart';
+import '/view/components/signin/info_text.dart';
 import '/view/components/signin/password_form.dart';
 
 class SigninPage extends StatelessWidget {
@@ -21,6 +22,7 @@ class SigninPage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: const [
+            InfoText(),
             EmailForm(),
             PasswordForm(),
             EmailSigninButton(),
