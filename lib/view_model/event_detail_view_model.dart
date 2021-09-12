@@ -34,6 +34,15 @@ class EventDetailViewModel extends StateNotifier<Event> {
     }
   }
 
+  Future cancelEvent() async {
+    final can = await canJoinEvent();
+    if (can == true) {
+      await EventsDB().decrementGuestCount(state);
+      await GuestsDB().deleteGuest(state.uid, state.id);
+      state = state.copyWith(guestCount: state.guestCount - 1);
+    }
+  }
+
   Future<bool> canJoinEvent() async {
     final user = Auth().getCurrentUser();
     final guestList = await GuestsDB().getGuests(state.uid, state.id);

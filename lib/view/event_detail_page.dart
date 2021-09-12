@@ -10,6 +10,7 @@ import '/view/components/event_detail/event_body.dart';
 import '/view/components/event_detail/event_title.dart';
 import '/view/components/event_detail/guest_count.dart';
 import '/view/components/event_detail/join_button.dart';
+import '/view/components/event_detail/cancel_button.dart';
 import '/view_model/event_detail_view_model.dart';
 
 class EventDetailPage extends HookWidget {
@@ -34,6 +35,7 @@ class EventDetailPage extends HookWidget {
           EventBody(),
           GuestCount(),
           JoinButton(),
+          CancelButton(),
         ],
       ),
     );
